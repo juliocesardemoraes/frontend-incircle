@@ -11,8 +11,21 @@ export default function AdmimTabela() {
   useEffect(() => {
     LoadUser();
   }, []);
+
+  async function deleteUser(email) {
+    console.log(email);
+    const url = `${process.env.REACT_APP_BACKEND_HOST_URL}/user/delete`;
+    try {
+      const res = await axios.delete(url, { data: { email: email } });
+      console.log("RESPONSE", res);
+      LoadUser();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   function LoadUser() {
-    const url = "http://localhost:3000/user/list";
+    const url = `${process.env.REACT_APP_BACKEND_HOST_URL}/user/list`;
     axios
       .get(url)
       .then((res) => {
@@ -48,7 +61,13 @@ export default function AdmimTabela() {
           </td>
 
           <td className="align-middle text-center text-sm">
-            <button type="button" className="btn btn-primary btn-descaregar">
+            <button
+              type="button"
+              className="btn btn-primary btn-descaregar"
+              onClick={async () => {
+                await deleteUser(data.email);
+              }}
+            >
               Eliminar
             </button>
           </td>

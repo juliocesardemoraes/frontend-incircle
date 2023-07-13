@@ -1,7 +1,6 @@
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
@@ -9,12 +8,16 @@ export default function MeusAnuncios() {
   const [dataOffer, setdataOffer] = useState([]);
 
   useEffect(() => {
+    console.log("AQUII");
     LoadOffer();
   }, []);
+
   function LoadOffer() {
-    const url = "http://localhost:3000/offer/list";
-    axios.get(url)
-      .then(res => {
+    const url = `${process.env.REACT_APP_BACKEND_HOST_URL}/offer/list`;
+    
+    axios
+      .get(url)
+      .then((res) => {
         if (res.data.success) {
           const data = res.data.data;
           setdataOffer(data);
@@ -22,14 +25,14 @@ export default function MeusAnuncios() {
           alert("Error Web Service!");
         }
       })
-      .catch(error => {
-        alert(error)
+      .catch((error) => {
+        alert(error);
       });
   }
 
   function LoadFillData() {
     return dataOffer.map((data, index) => {
-      const vendUser = 2;
+      const vendUser = 1;
       if (data.UserUserId == vendUser)
         return (
           <tr>
@@ -51,7 +54,12 @@ export default function MeusAnuncios() {
             </td>
             <td class="align-middle">
               <Link
-                to="/editeAnuncio"
+                to={`/editarAnuncio?data=${JSON.stringify({
+                  quantity: data.quantity,
+                  priceEnergy: data.priceEnergy,
+                  totalPrice: data.totalPrice,
+                  offerId: data.offerId,
+                })}`}
                 class="text-secondary font-weight-bold text-xs"
                 data-toggle="tooltip"
                 data-original-title="Edit user"
@@ -60,17 +68,17 @@ export default function MeusAnuncios() {
               </Link>
             </td>
           </tr>
-
         );
     });
   }
-
 
   return (
     <table class="table align-items-center mb-0">
       <thead>
         <tr>
-          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data</th>
+          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+            Data
+          </th>
           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
             Quantidade anunciada
           </th>
@@ -88,9 +96,5 @@ export default function MeusAnuncios() {
         <LoadFillData />
       </tbody>
     </table>
-
   );
 }
-
-
-

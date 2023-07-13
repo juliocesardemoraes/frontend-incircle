@@ -43,7 +43,7 @@ export default function FormRegistroComponent() {
     } else if (campPassword === "") {
       alert("Escolha sua palavra-chave");
     } else {
-      const baseUrl = "http://localhost:3000/form/create";
+      const baseUrl = `${process.env.REACT_APP_BACKEND_HOST_URL}/form/create`;
       const datapost = {
         name: campName,
         email: campEmail,

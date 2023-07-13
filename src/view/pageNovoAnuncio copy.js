@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 import navHComponent from "./navbarhori";
 import navVendaComponent from "./navbarVendedor";
-import EditarAnuncioComponent from "./editarAnuncio";
+import novoAnuncio from "./novoAnuncio";
 
-export default function EditarAnuncio() {
+export default function pageNovoAnuncio() {
   return (
     <div className="g-sidenav-show   bg-gray-100">
       <div
@@ -18,9 +18,7 @@ export default function EditarAnuncio() {
       <main class="main-content position-relative border-radius-lg ">
         {navHComponent()}
         <div class="container-fluid py-4">
-          <div class="row index-ultimos-anuncios">
-            {EditarAnuncioComponent()}
-          </div>
+          <div class="row index-ultimos-anuncios">{novoAnuncio()}</div>
         </div>
       </main>
     </div>
