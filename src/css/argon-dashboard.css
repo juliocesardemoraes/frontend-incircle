@@ -28886,6 +28886,10 @@ pre[class*="language-"] {
   width: 11px;
 }
 
+.red__text{
+  color: var(--bs-red)
+}
+
 /* MS supports */
 @supports (-ms-overflow-style: none) {
   .ps {
