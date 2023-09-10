@@ -1,11 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-
 import NavHComponent from "./navbarhori";
 import navCompraComponent from "./navbarComprador";
-import AdmimTabela from "./AdminTabela";
 import Profile from "./Profile";
 
 export default function PageProfile() {

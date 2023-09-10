@@ -1,31 +1,20 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Routes,
-  useNavigate,
-} from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import imageeolic from "../img/Producao-eolica.svg";
 import imagesolar from "../img/Producao-solar.svg";
 import imagehidraulic from "../img/Producao-hidrica.svg";
-import imageoutro from "../img/Producao-outra.svg";
 import imagePerfilEx from "../img/Foto_Perfil.svg";
 
 export default function FormRegistroComponent() {
-  const [dataUser, setdataUser] = useState("");
-  const [dataUser2, setdataUser2] = useState("");
   const [campName, setcampName] = useState("");
   const [campEmail, setcampEmail] = useState("");
   const [campPassword, setcampPassword] = useState("");
   const [campAddress, setcampAddress] = useState("");
   const [campCodigoPostal, setcampCodigoPostal] = useState("");
   const [campDistrito, setcampDistrito] = useState("");
-  const [campPhoto, setcampPhoto] = useState("");
-  const [stringRole, setstringRole] = useState("");
   const [selectRole, setselectRole] = useState(null);
   const [selectCapacity, setSelectCapacity] = useState(null);
   const [selectType, setSelectType] = useState(null);

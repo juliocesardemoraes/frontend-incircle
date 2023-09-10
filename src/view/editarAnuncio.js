@@ -1,26 +1,17 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Link,
-  useSearchParams,
-  useNavigate,
-} from "react-router-dom";
+import React, { useState } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 export default function EditarAnuncioComponent() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const data = JSON.parse(searchParams.get("data"));
   const [campQuantity, setcampQuantity] = useState(data.quantity || "");
   const [campEnergy, setcampEnergy] = useState(data.priceEnergy || "");
   const [campPrice, setcampPrice] = useState(data.totalPrice || "");
 
   const navigate = useNavigate();
-
-  /*
-        updateDate: updateDate,
-  */
 
   async function SendSave() {
     if (campQuantity === 0) {
@@ -37,10 +28,10 @@ export default function EditarAnuncioComponent() {
         totalPrice: campPrice,
         id: data.offerId,
       };
-      const request = await axios
+      await axios
         .put(baseUrl, datapost)
         .then((response) => {
-          if (response.data.success == true) {
+          if (response.data.success === true) {
             alert(response.data.message);
             navigate("/vendedor");
           } else {

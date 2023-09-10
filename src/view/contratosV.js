@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import imageleandro from "../img/leandro-faria.png";
 import { useAtom } from "jotai";
 import { userLoggedIn } from "../store/store";

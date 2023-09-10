@@ -1,7 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import relogioimg from "../img/relógio.png";
 
 export default function anunciosComp() {

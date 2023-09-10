@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import groupImage from "../img/Group.png";
 import groupHome from "../img/Home.svg";
 import imageAnuncio from "../img/Meus_Anuncios_pg.svg";

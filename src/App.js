@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./view/login";
 import FormRegistro from "./view/formRegistro";
 import FimRegistro from "./view/fimRegistro";
@@ -27,6 +27,7 @@ function App() {
     let data = sessionStorage.getItem("user");
     const user = JSON.parse(data);
     setUser(user);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

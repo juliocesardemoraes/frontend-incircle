@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-
-import NavHComponent from "./navbarhori";
-import navCompraComponent from "./navbarComprador";
-import AdminTabela from "./AdminTabela.jsx";
 import { useAtom } from "jotai";
 import { actualProfile } from "../store/store";
 import axios from "axios";

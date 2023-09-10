@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import axios from "axios";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import imageLeandro from "../img/leandro-faria.png";
 import { actualProfile } from "../store/store";
@@ -22,7 +22,7 @@ export default function AdmimTabela() {
   async function deleteUser(email) {
     const url = `${process.env.REACT_APP_BACKEND_HOST_URL}/user/delete`;
     try {
-      const res = await axios.delete(url, { data: { email: email } });
+      await axios.delete(url, { data: { email: email } });
       LoadUser();
     } catch (error) {
       console.log(error);
