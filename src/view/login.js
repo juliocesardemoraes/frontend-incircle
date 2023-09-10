@@ -23,7 +23,6 @@ export default function LoginComponent() {
         params: { email: email, password: password },
       });
 
-      console.log("DATA", res.data);
       sessionStorage.setItem("user", JSON.stringify(res.data));
 
       setUserLogged({
@@ -31,10 +30,6 @@ export default function LoginComponent() {
       });
       navigate(`${res.data.role}`);
     } catch (error) {
-      console.log("ERRRRR", error);
-      console.log("Er", error.request);
-      console.log("Er2", error.message);
-      console.log("ERRR", error.message);
       const errorMessage = JSON.parse(error.request.responseText);
 
       setInvalidCredentials(errorMessage.message);
