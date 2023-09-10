@@ -35,21 +35,29 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/formRegistro" element={<FormRegistro />} />
           <Route path="/fimRegistro" element={<FimRegistro />} />
-          <Route element={<ProtectedRouter />}>
-            <Route path="/comprador" element={<Comprador />} />
+
+          <Route element={<ProtectedRouter userType={"vendedor"} />}>
             <Route path="/vendedor" element={<Vendedor />} />
+            <Route path="/novoAnuncio" element={<NovoAnuncio />} />
+            <Route path="/editarAnuncio" element={<EditarAnuncio />} />
+            <Route path="/minhasVendas" element={<MinhasVendas />} />
+            <Route
+              path="/contratoVendedor"
+              element={<PageContratosVendedor />}
+            />
           </Route>
-          <Route path="/novoAnuncio" element={<NovoAnuncio />} />
-          <Route path="/editarAnuncio" element={<EditarAnuncio />} />
-          <Route path="/minhasVendas" element={<MinhasVendas />} />
-          <Route path="/minhasCompras" element={<MinhasCompras />} />
-          <Route path="/contratoComprador" element={<ContratoComprador />} />
-          <Route
-            path="/pageMetodoPagamento"
-            element={<PageMetodoPagamento />}
-          />
-          <Route path="/contratoVendedor" element={<PageContratosVendedor />} />
-          <Route path="/Admin" element={<PageInicioAdmin />} />
+          <Route element={<ProtectedRouter userType={"comprador"} />}>
+            <Route path="/comprador" element={<Comprador />} />
+            <Route path="/minhasCompras" element={<MinhasCompras />} />
+            <Route path="/contratoComprador" element={<ContratoComprador />} />
+            <Route
+              path="/pageMetodoPagamento"
+              element={<PageMetodoPagamento />}
+            />
+          </Route>
+          <Route element={<ProtectedRouter userType={"admin"} />}>
+            <Route path="/Admin" element={<PageInicioAdmin />} />
+          </Route>
         </Routes>
       </div>
     </Router>
