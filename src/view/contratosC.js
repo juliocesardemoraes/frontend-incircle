@@ -28,12 +28,10 @@ export default function ContratosComp() {
         });
 
         if (res.status === 200) {
-          console.log(res.data);
           setContracts(res.data.data);
         } else {
           alert("Error Web Service!");
         }
-        console.log("res", res);
       } catch (error) {
         setContracts([]);
       }
@@ -76,7 +74,6 @@ export default function ContratosComp() {
                       <tbody>
                         {contracts.map((contract) => {
                           const contractDetails = contract.contractDetails;
-                          console.log("CONT", contract);
 
                           return (
                             <tr>

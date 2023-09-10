@@ -4,13 +4,20 @@ import axios from "axios";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import imageLeandro from "../img/leandro-faria.png";
+import { actualProfile } from "../store/store";
+import { useAtom } from "jotai";
 
 export default function AdmimTabela() {
   const [dataUser, setdataUser] = useState([]);
+  const [, setProfile] = useAtom(actualProfile);
 
   useEffect(() => {
     LoadUser();
   }, []);
+
+  const handleProfileChosen = (profile) => {
+    setProfile(profile);
+  };
 
   async function deleteUser(email) {
     const url = `${process.env.REACT_APP_BACKEND_HOST_URL}/user/delete`;
@@ -70,7 +77,13 @@ export default function AdmimTabela() {
             </button>
           </td>
           <td className="align-middle">
-            <Link to="/profile" className="btn btn-outline-primary btn-anexar">
+            <Link
+              to="/profile"
+              className="btn btn-outline-primary btn-anexar"
+              onClick={() => {
+                handleProfileChosen(data.userId);
+              }}
+            >
               Ver Perfil
             </Link>
           </td>

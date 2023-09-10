@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Link } from "react-router-dom";
-import navHComponent from "./navbarhori";
+import NavHComponent from "./navbarhori";
 import navVendaComponent from "./navbarVendedor";
 import meusAnuncios from "./meusAnuncios";
 
@@ -15,7 +15,7 @@ export default function InicioVendedor() {
       ></div>
       {navVendaComponent()}
       <main className="main-content position-relative border-radius-lg ">
-        {navHComponent()}
+        <NavHComponent></NavHComponent>
         <div className="container-fluid py-4">
           <div className="row index-ultimos-anuncios">
             <div className="col-12">

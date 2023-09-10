@@ -78,9 +78,7 @@ export default function NovoAnuncio() {
       };
       axios
         .post(baseUrl, datapost)
-        .then((response) => {
-          //console.log("RES", response);
-        })
+        .then((response) => {})
         .catch((error) => {
           alert("Error 34 " + error);
         })

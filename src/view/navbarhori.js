@@ -2,8 +2,17 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { useAtom } from "jotai";
+import { userLoggedIn } from "../store/store";
 
-export default function navHComponent() {
+export default function NavHComponent() {
+  const [actualUser, setActualUser] = useAtom(userLoggedIn);
+
+  const logoutUser = () => {
+    sessionStorage.removeItem("user");
+    setActualUser(null);
+  };
+
   return (
     <nav
       className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
@@ -47,6 +56,9 @@ export default function navHComponent() {
               <a
                 href="javascript:;"
                 className="nav-link text-white font-weight-bold px-0"
+                onClick={() => {
+                  logoutUser();
+                }}
               >
                 <i className="fa fa-user me-sm-1"></i>
                 <span className="d-sm-inline d-none text-white">Logout</span>

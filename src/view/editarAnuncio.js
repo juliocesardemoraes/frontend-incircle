@@ -12,8 +12,6 @@ import {
 export default function EditarAnuncioComponent() {
   const [searchParams, setSearchParams] = useSearchParams();
   const data = JSON.parse(searchParams.get("data"));
-  console.log(data);
-
   const [campQuantity, setcampQuantity] = useState(data.quantity || "");
   const [campEnergy, setcampEnergy] = useState(data.priceEnergy || "");
   const [campPrice, setcampPrice] = useState(data.totalPrice || "");

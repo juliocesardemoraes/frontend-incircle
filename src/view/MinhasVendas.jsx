@@ -20,7 +20,6 @@ export default function MinhasVendas() {
         const res = await axios.get(url, {
           params: { sellerId: actualUser.userId },
         });
-        console.log("RES", res.data.data);
 
         setSales(res.data.data);
       } catch (error) {

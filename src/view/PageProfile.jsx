@@ -4,21 +4,26 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 import NavHComponent from "./navbarhori";
-import navVendaComponent from "./navbarVendedor";
-import meusAnuncios from "./meusAnuncios";
+import navCompraComponent from "./navbarComprador";
+import AdmimTabela from "./AdminTabela";
+import Profile from "./Profile";
 
-export default function pageMeusAnuncios() {
+export default function PageProfile() {
   return (
     <div className="g-sidenav-show   bg-gray-100">
       <div
         id="gradiente"
         className="min-height-300 bg-primary position-absolute w-100"
       ></div>
-      {navVendaComponent()}
+      {navCompraComponent()}
       <main class="main-content position-relative border-radius-lg ">
         <NavHComponent></NavHComponent>
         <div class="container-fluid py-4">
-          <div class="row index-ultimos-anuncios">{meusAnuncios()}</div>
+          <div class="row index-ultimos-anuncios">
+            <div className="row margem_anuncios">
+              <Profile></Profile>
+            </div>
+          </div>
         </div>
       </main>
     </div>

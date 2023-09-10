@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
-import navHComponent from "./navbarhori";
+import NavHComponent from "./navbarhori";
 import navVendaComponent from "./navbarVendedor";
 import MinhasVendas from "./MinhasVendas";
 
@@ -16,7 +16,7 @@ export default function pageMinhasVendas() {
       ></div>
       {navVendaComponent()}
       <main class="main-content position-relative border-radius-lg ">
-        {navHComponent()}
+        <NavHComponent></NavHComponent>
         <div class="container-fluid py-4">
           <div class="row index-ultimos-anuncios">
             <MinhasVendas></MinhasVendas>

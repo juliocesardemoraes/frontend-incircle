@@ -3,9 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
-import navHComponent from "./navbarhori";
+import NavHComponent from "./navbarhori";
 import navCompraComponent from "./navbarComprador";
-import tableadmin from "./adminTabela";
+import AdmimTabela from "./AdminTabela";
 
 export default function inicioAdmin() {
   return (
@@ -16,10 +16,12 @@ export default function inicioAdmin() {
       ></div>
       {navCompraComponent()}
       <main class="main-content position-relative border-radius-lg ">
-        {navHComponent()}
+        <NavHComponent></NavHComponent>
         <div class="container-fluid py-4">
           <div class="row index-ultimos-anuncios">
-            <div className="row margem_anuncios">{tableadmin()}</div>
+            <div className="row margem_anuncios">
+              <AdmimTabela></AdmimTabela>
+            </div>
           </div>
         </div>
       </main>

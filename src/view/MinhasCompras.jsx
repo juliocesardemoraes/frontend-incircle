@@ -20,7 +20,6 @@ export default function MinhasCompras() {
         const res = await axios.get(url, {
           params: { paid: true, buyerId: actualUser.userId },
         });
-        console.log("RES", res.data.data);
         setSales(res.data.data);
       } catch (error) {
         console.log("ERROR", error);

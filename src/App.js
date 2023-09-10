@@ -18,6 +18,7 @@ import EditarAnuncio from "./view/pageEditarAnuncio";
 import ProtectedRouter from "./view/ProtectedRoute";
 import { useAtom } from "jotai";
 import { userLoggedIn } from "./store/store";
+import PageProfile from "./view/PageProfile";
 
 function App() {
   const [, setUser] = useAtom(userLoggedIn);
@@ -55,8 +56,9 @@ function App() {
               element={<PageMetodoPagamento />}
             />
           </Route>
-          <Route element={<ProtectedRouter userType={"admin"} />}>
-            <Route path="/Admin" element={<PageInicioAdmin />} />
+          <Route element={<ProtectedRouter userType={"administrador"} />}>
+            <Route path="/profile" element={<PageProfile />} />
+            <Route path="/administrador" element={<PageInicioAdmin />} />
           </Route>
         </Routes>
       </div>
