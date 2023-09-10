@@ -5,9 +5,10 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 import navHComponent from "./navbarhori";
 import navCompraComponent from "./navbarComprador";
-import anuncios from "./listaAnuncio";
+import metodoPagamento from "./MetodoPagamento";
+import MetodoPagamento from "./MetodoPagamento";
 
-export default function inicioComprador() {
+export default function PageMetodoPagamento() {
   return (
     <div className="g-sidenav-show   bg-gray-100">
       <div
@@ -19,7 +20,7 @@ export default function inicioComprador() {
         {navHComponent()}
         <div class="container-fluid py-4">
           <div class="row index-ultimos-anuncios">
-            <div className="row margem_anuncios">{anuncios()}</div>
+            <MetodoPagamento></MetodoPagamento>
           </div>
         </div>
       </main>

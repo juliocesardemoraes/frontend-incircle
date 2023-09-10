@@ -1,14 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAtom } from "jotai";
+import { userLoggedIn } from "../store/store";
 
 export default function NovoAnuncio() {
-  const [dataOffer, setdataOffer] = useState("");
   const [campQuantity, setcampQuantity] = useState("");
   const [campEnergy, setcampEnergy] = useState("");
   const [campPrice, setcampPrice] = useState("");
+  const [userLogged] = useAtom(userLoggedIn);
+
+  const navigate = useNavigate();
+
   return (
     <div className="col-xl-6 col-md-7 d-flex flex-column mx-auto criar">
       <div className="container-fluid py-4 form">
@@ -45,20 +50,18 @@ export default function NovoAnuncio() {
                 />
               </div>
 
-              <Link
-                onClick={() => SendSave()}
-                to="/vendedor"
-                className="btn btn-primary"
-              >
+              <button onClick={(e) => SendSave(e)} className="btn btn-primary">
                 Guardar
-              </Link>
+              </button>
             </form>
           </div>
         </div>
       </div>
     </div>
   );
-  function SendSave() {
+
+  function SendSave(event) {
+    event.preventDefault();
     if (campQuantity === 0) {
       alert("Escolha a quantidade vendida.");
     } else if (campEnergy === 0) {
@@ -66,25 +69,24 @@ export default function NovoAnuncio() {
     } else if (campPrice === "") {
       alert("Escolha o preço total.");
     } else {
-      const iduser = 2;
       const baseUrl = `${process.env.REACT_APP_BACKEND_HOST_URL}/offer/create`;
-
       const datapost = {
         quantity: campQuantity,
         priceEnergy: campEnergy,
         totalPrice: campPrice,
+        userId: userLogged.userId,
       };
       axios
         .post(baseUrl, datapost)
         .then((response) => {
-          if (response.data.success === true) {
-            alert(response.data.message);
-          } else {
-            alert(response.data.message);
-          }
+          //console.log("RES", response);
         })
         .catch((error) => {
           alert("Error 34 " + error);
+        })
+        .finally(() => {
+          navigate("/vendedor");
+          return;
         });
     }
   }
