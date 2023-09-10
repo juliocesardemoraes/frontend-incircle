@@ -13,7 +13,6 @@ export default function AdmimTabela() {
   }, []);
 
   async function deleteUser(email) {
-    console.log(email);
     const url = `${process.env.REACT_APP_BACKEND_HOST_URL}/user/delete`;
     try {
       const res = await axios.delete(url, { data: { email: email } });
