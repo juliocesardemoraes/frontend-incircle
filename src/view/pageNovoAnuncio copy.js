@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 import navHComponent from "./navbarhori";
 import navVendaComponent from "./navbarVendedor";
-import novoAnuncio from "./novoAnuncio";
+import novoAnuncio from "./NovoAnuncio";
 
 export default function pageNovoAnuncio() {
   return (
