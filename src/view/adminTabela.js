@@ -16,7 +16,6 @@ export default function AdmimTabela() {
     const url = `${process.env.REACT_APP_BACKEND_HOST_URL}/user/delete`;
     try {
       const res = await axios.delete(url, { data: { email: email } });
-      console.log("RESPONSE", res);
       LoadUser();
     } catch (error) {
       console.log(error);

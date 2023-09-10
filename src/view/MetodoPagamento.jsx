@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import coinimg from "../img/coin.svg";
 import coincashimg from "../img/cash-coin.svg";
 import unionimg from "../img/Union.svg";
@@ -11,6 +11,7 @@ import axios from "axios";
 
 export default function MetodoPagamento() {
   const [currentContract] = useAtom(actualContract);
+  const navigate = useNavigate();
 
   const updateContract = async () => {
     const url = `${process.env.REACT_APP_BACKEND_HOST_URL}/contract/update`;
@@ -20,7 +21,7 @@ export default function MetodoPagamento() {
         offerOfferId: currentContract.offerOfferId,
         status: "pago",
       });
-      console.log("RESPOSTA", res);
+      if (res.status === 200) navigate("/minhasCompras");
     } catch (error) {
       console.log(error);
     }

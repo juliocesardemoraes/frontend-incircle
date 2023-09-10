@@ -1,14 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import navHComponent from "./navbarhori";
 import navVendaComponent from "./navbarVendedor";
 import meusAnuncios from "./meusAnuncios";
-import minhasVendas from "./minhasVendas";
-import { userLoggedIn } from "../store/store";
-import { useAtom } from "jotai";
 
 export default function InicioVendedor() {
   return (
