@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,9 +11,19 @@ export default function LoginComponent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [invalidCredentials, setInvalidCredentials] = useState("");
-  const [, setUserLogged] = useAtom(userLoggedIn);
+  const [actualUser, setActualUser] = useAtom(userLoggedIn);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let data = sessionStorage.getItem("user");
+    const user = JSON.parse(data);
+    if (user) {
+      navigate(`/${user.role}`);
+    } else if (actualUser) {
+      navigate(`/${actualUser.role}`);
+    }
+  }, []);
 
   const validateUser = async (event) => {
     event.preventDefault();
@@ -25,7 +35,7 @@ export default function LoginComponent() {
 
       sessionStorage.setItem("user", JSON.stringify(res.data));
 
-      setUserLogged({
+      setActualUser({
         ...res.data,
       });
       navigate(`${res.data.role}`);
